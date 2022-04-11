@@ -5,8 +5,6 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +38,7 @@ public class UserController {
 
 	@PostMapping("/")
 	@ApiOperation("Registration of user")
-	public User createUser(@RequestBody User user) throws Exception {
+	public User createUser(@RequestBody User user,HttpServletRequest request) throws Exception {
 
 		user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
 
@@ -55,7 +53,7 @@ public class UserController {
 
 		roles.add(userRole);
 
-		return this.userService.createUser(user, roles, request);
+		return this.userService.createUser(user, roles, siteURL);
 
 	}
 
