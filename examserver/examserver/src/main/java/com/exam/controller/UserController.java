@@ -55,7 +55,7 @@ public class UserController {
 
 		roles.add(userRole);
 
-		return this.userService.createUser(user, roles);
+		return this.userService.createUser(user, roles, request);
 
 	}
 
@@ -74,9 +74,9 @@ public class UserController {
 		}
 	}
 
-//	private String getSiteURL(HttpServletRequest request) {
-//		String siteURL = request.getRequestURL().toString();
-//		return siteURL.replace(request.getServletPath(), "");
-//	}
+	private String getSiteURL(HttpServletRequest request) {
+		String siteURL = request.getRequestURL().toString();
+		return siteURL.replace(request.getServletPath(), "");
+	}
 
 }
