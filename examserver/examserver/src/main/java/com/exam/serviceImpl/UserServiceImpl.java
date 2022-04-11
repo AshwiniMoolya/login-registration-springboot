@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 	private JavaMailSender mailSender;
 
 	@Override
-	public User createUser(User user, Set<UserRole> userRoles) throws Exception {
+	public User createUser(User user, Set<UserRole> userRoles, String siteURL) throws Exception {
 		User local = this.userRepository.findByUsername(user.getUsername());
 		if (local != null) {
 			System.out.println("User is already there!!");
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void sendVerificationEmail(User user)
+	public void sendVerificationEmail(User user, String siteURL)
 			throws UnsupportedEncodingException, MessagingException {
 
 		String toAddress = user.getEmail();
