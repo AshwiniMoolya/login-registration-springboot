@@ -13,7 +13,7 @@ public interface UserService {
 
 	void deleteUser(long id);
   	     
-	    public void sendVerificationEmail(User user) throws UnsupportedEncodingException, MessagingException;
+	    public void sendVerificationEmail(User user, String siteURL) throws UnsupportedEncodingException, MessagingException;
 
-		User createUser(User user, Set<UserRole> userRoles) throws Exception;
+		User createUser(User user, Set<UserRole> userRoles, String siteURL) throws Exception;
 }
